@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Calculadora Indice de Massa Corporea</h1>
+    </header>
+    <section>
+        <div id="app">
+            <p id="identificacao">
+                Nome:
+                <input type="text" v-model.lazy='nome'>
+                <br>
+                Olá,{{nome}}
+                <br>
+                Aceito os termos:
+                <input type="checkbox" v-model='termo'>
+            </p>
+
+            <div v-if="termo">
+                Digite sua altura:
+                <input type="text" v-model='altura' id="altura">
+                <br>
+                Digite seu peso :
+                <input type="number" v-model.lazy='peso' id="peso">
+                <input type="button" value="Calcular" @click='calculaIMC'>
+                <br>
+                <br>
+               
+            <div v-if="imc > 0 " id="resultado">
+                Seu IMC é: {{imc}}
+                <p v-if="imc < 18.5">Voce está abaixo do peso</p>
+                <p v-else-if="imc >18.5 || imc > 24.9">Voce está com o peso Normal</p>
+                <p v-else-if="imc > 24.9 || imc <29.9">Voce está SobrePeso</p>
+                <p v-else>Obesidade</p>
+            </div>
+
+        </div>
+
+
+
+
+        </div>
+    </section>
+    <footer>
+        Treinando com VueJS
+    </footer>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
